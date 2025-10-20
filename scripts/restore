@@ -1,11 +1,11 @@
 #!/bin/bash
 
-source ../settings/scripts/_common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
 # RESTORE THE APP MAIN DIR
 #=================================================
+
 ynh_script_progression "Restoring the app main directory..."
 
 ynh_restore "$install_dir"
@@ -13,6 +13,7 @@ ynh_restore "$install_dir"
 #=================================================
 # RESTORE THE MYSQL DATABASE
 #=================================================
+
 ynh_script_progression "Restoring the MySQL database..."
 
 ynh_mysql_db_shell < ./db.sql
@@ -20,6 +21,7 @@ ynh_mysql_db_shell < ./db.sql
 #=================================================
 # RESTORE SYSTEMD
 #=================================================
+
 ynh_script_progression "Restoring $app's systemd service..."
 
 ynh_restore "/etc/nginx/conf.d/$domain.d/$app.conf"
@@ -32,6 +34,7 @@ yunohost service add $app --description="WriteFreely daemon" --log="/var/log/$ap
 #=================================================
 # START SYSTEMD SERVICE
 #=================================================
+
 ynh_script_progression "Starting $app's systemd service..."
 
 ynh_systemctl --service=$app --action="start" --log_path="systemd" --wait_until="Serving on"

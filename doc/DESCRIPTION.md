@@ -1,5 +1,1 @@
-WriteFreely is a beautifully pared-down blogging platform that's simple on the surface, yet powerful underneath.
-
-Can be run as Single User Blog or Multi User Instance.
-
-Each User can be limited from 1 to unlimited blogs.
+Clean, Markdown-based publishing platform made for writers. Write together and build a community.

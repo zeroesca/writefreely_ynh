@@ -68,10 +68,8 @@ ynh_script_progression "Setting admin URL location..."
 
 if [ $path = "/" ]
 then
-    ynh_config_add --template="config_domain.json" --destination="$install_dir/config.json"
     ynh_app_setting_set --key=adminurl --value=https://$domain/admin/settings
 else
-    ynh_config_add --template="config_path.json" --destination="$install_dir/config.json"
     ynh_app_setting_set --key=adminurl --value=https://$domain$path/admin/settings
 fi
 

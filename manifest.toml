@@ -2,8 +2,8 @@ packaging_format = 2
 
 id = "writefreely"
 name = "WriteFreely"
-description.en = "For starting a minimalist, federated blog or an entire community"
-description.fr = "Permet de créer un blog fédéré minimaliste ou une communauté entière"
+description.en = "Clean, Markdown-based publishing platform made for writers. Write together and build a community."
+description.fr = "Plateforme de publication épurée, basée sur Markdown, conçue pour les auteurs. Écrivez ensemble et construisez une communauté."
 
 version = "0.16.0~ynh2"
 

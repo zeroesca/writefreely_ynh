@@ -53,6 +53,22 @@ ynh_script_progression "Starting $app's systemd service..."
 ynh_systemctl --service=$app --action="start" --log_path="systemd" --wait_until="Serving on"
 
 #=================================================
+# SET ADMINURL VARIABLE
+#=================================================
+
+if ynh_app_upgrading_from_version_before 0.16.0~ynh2
+then
+    ynh_script_progression "Setting admin url location..."
+
+    if [ $path = "/" ]
+    then
+        ynh_app_setting_set --key=adminurl --value=https://$domain/admin/settings
+    else
+        ynh_app_setting_set --key=adminurl --value=https://$domain$path/admin/settings
+    fi
+fi
+
+#=================================================
 # END OF SCRIPT
 #=================================================
 

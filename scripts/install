@@ -31,7 +31,7 @@ ynh_config_add_systemd
 yunohost service add $app --description="WriteFreely daemon" --log="/var/log/$app/$app.log"
 
 #=================================================
-# ADD A CONFIGURATION
+# ADD APP CONFIGURATION
 #=================================================
 
 ynh_script_progression "Adding $app's configuration..."
@@ -59,6 +59,21 @@ popd
 ynh_script_progression "Starting $app's systemd service..."
 
 ynh_systemctl --service=$app --action="start" --log_path="systemd" --wait_until="Serving on"
+
+#=================================================
+# SET ADMIN URL VARIABLE
+#=================================================
+
+ynh_script_progression "Setting admin URL location..."
+
+if [ $path = "/" ]
+then
+    ynh_config_add --template="config_domain.json" --destination="$install_dir/config.json"
+    ynh_app_setting_set --key=adminurl --value=https://$domain/admin/settings
+else
+    ynh_config_add --template="config_path.json" --destination="$install_dir/config.json"
+    ynh_app_setting_set --key=adminurl --value=https://$domain$path/admin/settings
+fi
 
 #=================================================
 # END OF SCRIPT

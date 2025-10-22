@@ -64,7 +64,7 @@ ynh_systemctl --service=$app --action="start" --log_path="systemd" --wait_until=
 # SET ADMINURL VARIABLE
 #=================================================
 
-ynh_script_progression "Setting admin URL location..."
+ynh_script_progression "Setting admin URL..."
 
 if [ $path = "/" ]
 then

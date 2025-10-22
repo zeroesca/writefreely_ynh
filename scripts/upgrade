@@ -58,7 +58,7 @@ ynh_systemctl --service=$app --action="start" --log_path="systemd" --wait_until=
 
 if ynh_app_upgrading_from_version_before 0.16.0~ynh2
 then
-    ynh_script_progression "Setting admin url location..."
+    ynh_script_progression "Setting admin URL..."
 
     if [ $path = "/" ]
     then
